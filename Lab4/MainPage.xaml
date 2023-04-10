@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab4.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="{OnPlatform WinUI=30, Android=10}"
+            Margin="{OnPlatform WinUI=20, Android=10}"
+            VerticalOptions="Start">
+
+            <Grid ColumnDefinitions="Auto, Auto" ColumnSpacing="10">
+                <Label
+                    Grid.Column="0"
+                    Text="Оберіть максимальне число перестановки:"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="{OnPlatform WinUI=20, Android=15}"
+                    HorizontalOptions="Center"
+                    VerticalTextAlignment="End"/>
+
+                <Picker FontSize="{OnPlatform WinUI=20, Android=15}"
+                        x:Name="CountElements"
+                        Grid.Column="1">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:Int32}">
+                            <x:Int32>2</x:Int32>
+                            <x:Int32>3</x:Int32>
+                            <x:Int32>4</x:Int32>
+                            <x:Int32>5</x:Int32>
+                            <x:Int32>6</x:Int32>
+                            <x:Int32>7</x:Int32>
+                            <x:Int32>8</x:Int32>
+                            <x:Int32>9</x:Int32>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+
+            <Button
+                Text="Перемножити перестановки"
+                FontAttributes="Bold"
+                FontSize="20"
+                Clicked="Button_Clicked"/>
+
+            <Grid ColumnDefinitions="2*,2*" ColumnSpacing="10">
+                <ScrollView 
+                    Grid.Column="0"
+                    Orientation="Vertical"
+                    VerticalScrollBarVisibility="Default"
+                    MinimumHeightRequest="300"
+                    MaximumHeightRequest="300">
+                    <Editor
+                        FontSize="Subtitle"
+                        IsReadOnly="True"
+                        x:Name="ResultPermutation"
+                        VerticalOptions="FillAndExpand"
+                        VerticalTextAlignment="Start"
+                        AutoSize="TextChanges"/>
+                </ScrollView>
+                <ScrollView 
+                    Grid.Column="1"
+                    Orientation="Vertical"
+                    VerticalScrollBarVisibility="Default"
+                    MinimumHeightRequest="300"
+                    MaximumHeightRequest="300">
+                    <Editor
+                        FontSize="Subtitle"
+                        IsReadOnly="True"
+                        x:Name="ResultAll"
+                        VerticalOptions="FillAndExpand"
+                        VerticalTextAlignment="Start"
+                        AutoSize="TextChanges"/>
+                </ScrollView>
+            </Grid>
+
+            <Grid IsVisible="{OnPlatform WinUI=true, Android=false}" ColumnDefinitions="1*,3*" ColumnSpacing="10">
+                <Label
+                    Grid.Column="0"
+                    Text="Час виконання програми:"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="20"
+                    HorizontalOptions="Start"
+                    VerticalTextAlignment="End"/>
+
+                <Editor
+                    Grid.Column="1"
+                    FontSize="Subtitle"
+                    IsReadOnly="True"
+                    x:Name="TimeExecuteProgram"
+                    VerticalOptions="FillAndExpand"
+                    VerticalTextAlignment="Start"
+                    AutoSize="TextChanges"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
